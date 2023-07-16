@@ -1,8 +1,10 @@
 ﻿//IntarfacesIntro();
 
 
+using İnterfaces;
+
 CustomerManager customerManager = new CustomerManager();
-customerManager.Add();
+customerManager.Add(new OracleCustomerDal());
 
 
 Console.ReadLine();
