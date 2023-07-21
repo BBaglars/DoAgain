@@ -37,7 +37,7 @@ namespace İnterfaces
     {
         public void Add()
         {
-            Console.WriteLine("Sgl added");
+            Console.WriteLine("Oracle added");
         }
 
         public void Delete()
@@ -50,12 +50,33 @@ namespace İnterfaces
             Console.WriteLine("Oracle updated");
         }
 
-        internal class CustomerManager
+        
+    }
+    class MySglCustomerDaL : ICustomerDal
+    {
+        public void Add()
         {
-            public void Add(ICustomerDal customerDal)
-            {
-                customerDal.Add();
-            }
+            Console.WriteLine("MySgl added");
+        }
+
+        public void Delete()
+        {
+            Console.WriteLine("MySgl deleted");
+        }
+
+        public void Update()
+        {
+            Console.WriteLine("MySgl updated");
+        }
+
+
+    }
+    internal class CustomerManager
+    {
+        public void Add(ICustomerDal customerDal)
+        {
+            customerDal.Add();
         }
     }
+
 }

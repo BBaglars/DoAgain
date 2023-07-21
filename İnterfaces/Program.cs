@@ -1,44 +1,61 @@
 ﻿//IntarfacesIntro();
-
+//Demo();
 
 using İnterfaces;
 
-CustomerManager customerManager = new CustomerManager();
-customerManager.Add(new OracleCustomerDal());
-
-
-Console.ReadLine();
-
-static void IntarfacesIntro()
+internal class Program
 {
-    PersonManager manager = new PersonManager();
-    Customer customer2 = new Customer
+    private static void Main(string[] args)
     {
-        Id = 1,
-        FirstName = "Engin",
-        LastName = "Demiroğ",
-        Address = "Ankara"
-    };
-
-    Student student = new Student
-    {
-        Id = 1,
-        FirstName = "Derin",
-        LastName = "Demiroğ",
-        Departmant = "Computer Sciences"
-    };
+        ICustomerDal[] customerDals = new ICustomerDal[3] {new SqlServerCustomerDal(), new OracleCustomerDal(), new MySglCustomerDaL() };
+        foreach (var customerDal in customerDals)
+        {
+            customerDal.Add();
+        }
 
 
-    manager.Add(student);
-    manager.Add(new Customer { Id = 1, FirstName = "Engin", LastName = "Demiroğ", Address = "Ankara" });
-    manager.Add(customer2);
-    manager.Add(new Worker
-    {
-        Id = 1,
-        FirstName = "Derin",
-        LastName = "Demiroğ",
-        Departmant = "Computer Sciences"
-    });
+
+
+        Console.ReadLine();
+
+        static void IntarfacesIntro()
+        {
+            PersonManager manager = new PersonManager();
+            Customer customer2 = new Customer
+            {
+                Id = 1,
+                FirstName = "Engin",
+                LastName = "Demiroğ",
+                Address = "Ankara"
+            };
+
+            Student student = new Student
+            {
+                Id = 1,
+                FirstName = "Derin",
+                LastName = "Demiroğ",
+                Departmant = "Computer Sciences"
+            };
+
+
+            manager.Add(student);
+            manager.Add(new Customer { Id = 1, FirstName = "Engin", LastName = "Demiroğ", Address = "Ankara" });
+            manager.Add(customer2);
+            manager.Add(new Worker
+            {
+                Id = 1,
+                FirstName = "Derin",
+                LastName = "Demiroğ",
+                Departmant = "Computer Sciences"
+            });
+        }
+
+        static void Demo()
+        {
+            CustomerManager customerManager = new CustomerManager();
+            customerManager.Add(new OracleCustomerDal());
+        }
+    }
 }
 
 interface IPerson
